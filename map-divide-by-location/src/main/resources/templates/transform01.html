@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>度数转换器</title>
+    <!-- Bootstrap core CSS -->
+    <!--引入webjars里的bootstrap和jquery-->
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body class="text-center">
+
+<table>
+    <tbody>
+    <tr><td><h2 style="text-align: center; color: #007bff">经纬度格式转换工具</h2></td></tr>
+    <tr>
+    <td>
+        <form class="form-signin" action="dashboard.html" th:action="@{/calculate/transform02}" method="get">
+
+            <input type="text" name="degrees" class="form-control" placeholder="度数" required=""
+                   th:value="${degrees!=null}?${degrees}">
+            <p style="color: black; display: inline" th:text="换算结果" th:if="${not #strings.isEmpty(degree02)}"></p>
+            <p style="color: RED; display: inline" th:text="${degree02}" th:if="${not #strings.isEmpty(degree02)}"></p>
+            <p style="color: RED; display: inline" th:text="${minute02}" th:if="${not #strings.isEmpty(minute02)}"></p>
+            <p style="color: RED; display: inline" th:text="${second02}" th:if="${not #strings.isEmpty(second02)}"></p>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="换算">换算</button>
+        </form>
+
+
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <form class="form-signin" action="dashboard.html" th:action="@{/calculate/transform01}" method="get">
+            <input style="display:inline; max-width: 80px" type="text" name="degree" class="form-control"
+                   placeholder="度"
+                   autofocus="" th:value="${degree!=null}?${degree}">&nbsp;°&nbsp;
+            <input style="display:inline; max-width: 80px" type="text" name="minute" class="form-control"
+                   placeholder="分"
+                   autofocus="" th:value="${minute!=null}?${minute}">&nbsp;′&nbsp;
+            <input style="display:inline; max-width: 80px" type="text" name="second" class="form-control"
+                   placeholder="秒"
+                   autofocus="" th:value="${second!=null}?${second}">&nbsp;″&nbsp;
+
+            <br>
+            <p style="color: black;display: inline" th:text="换算结果" th:if="${not #strings.isEmpty(degrees02)}"></p>
+            <p style="color: RED;display: inline" th:text="${degrees02}" th:if="${not #strings.isEmpty(degrees02)}"></p>
+            <br>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="换算">换算</button>
+            <br>
+        </form>
+    </td>
+    </tr>
+    <tr>
+    <td><p class="mt-5 mb-3 text-muted">© 2018-2019 &nbsp;作者邮箱：fungis@163.com</p></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+
+</html>

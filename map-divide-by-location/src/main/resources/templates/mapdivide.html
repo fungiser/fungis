@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>地图分幅计算</title>
+    <!-- Bootstrap core CSS -->
+    <!--引入webjars里的bootstrap和jquery-->
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body class="text-center">
+<form class="form-signin" action="dashboard.html" th:action="@{/calculate/mapdivide}" method="post">
+    <h2 style="text-align: center; color: #007bff">地图分幅计算器</h2>
+    <!--判断-->
+    <select class="selectpicker show-tick form-control" data-live-search="true" name="belongs">
+        <option value="0">东经（E）</option>
+        <option value="1">西经（W）</option>
+    </select>
+    <br>
+    <label class="sr-only" th:text="经度">经度</label>
+    <input type="text" name="longitude" class="form-control" placeholder="经度"
+           required="" autofocus="" th:value="${longitude!=null}?${longitude}">
+    <br>
+    <label class="sr-only" th:text="纬度">纬度</label>
+    <input type="text" name="latitude" class="form-control" placeholder="纬度"
+           required="" th:value="${latitude!=null}?${latitude}">
+    <br>
+    <select class="selectpicker show-tick form-control" data-live-search="true" name="scale">
+        <option value="1">A-1:100万比例尺</option>
+        <option value="2">B-1:50 万比例尺</option>
+        <option value="3">C-1:25 万比例尺</option>
+        <option value="4">D-1:10 万比例尺</option>
+        <option value="5">E-1:5  万比例尺</option>
+        <option value="6">F-1:2.5万比例尺</option>
+        <option value="7">G-1:1  万比例尺</option>
+        <option value="8">H-1:5  千比例尺</option>
+
+    </select>
+    <br>
+    <p style="color: black" th:text="计算结果" th:if="${not #strings.isEmpty(calculateResult)}"></p>
+    <p style="color: RED" th:text="${calculateResult}" th:if="${not #strings.isEmpty(calculateResult)}"></p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="计算">计算</button>
+    <br>
+    <p class="mt-5 mb-3 text-muted">© 2018-2019 &nbsp;作者邮箱：fungis@163.com</p>
+</form>
+</body>
+
+</html>
